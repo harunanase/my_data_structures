@@ -221,11 +221,11 @@ mybst::Node<T>* BSTree<T>::__remove(T key, Node<T> *leaf)
 		{
 			leaf = leaf->right;
 		}
-        else if(leaf->right == NULL)
+		else if(leaf->right == NULL)
 		{
 			leaf = leaf->left;
 		}
-        delete temp;
+		delete temp;
 	}	
 	return leaf;
 }
