@@ -218,9 +218,13 @@ mybst::Node<T>* BSTree<T>::__remove(T key, Node<T> *leaf)
 		/* founded && (only exist one child || no child) */
 		Node<T> *temp = leaf;
 		if(leaf->left == NULL)
-        	leaf = leaf->right;
+		{
+			leaf = leaf->right;
+		}
         else if(leaf->right == NULL)
-            leaf = leaf->left;
+		{
+			leaf = leaf->left;
+		}
         delete temp;
 	}	
 	return leaf;
