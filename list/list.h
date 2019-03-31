@@ -20,10 +20,13 @@ namespace myList
 			~List();
 	
 			bool is_empty();
-			void enlist(T data);
-			T delist();
+			void insert_at_head(T data);
+			void insert_at_tail(T data);
+			T pop_from_head();
+			T pop_from_tail();
+
 			void dump();
-			Node<T>* front();
+			T* front();
 		private:
 			Node<T> *head;
 			Node<T> *tail;

@@ -16,9 +16,9 @@ List<T>::List()
 }
 
 template <class T>
-myList::Node<T>* List<T>::front()
+T* List<T>::front()
 {
-	return head;
+	return head->data;
 }
 
 
@@ -29,7 +29,27 @@ bool List<T>::is_empty()
 }
 
 template <class T>
-void List<T>::enlist(T data)
+void List<T>::insert_at_head(T data)
+{
+
+	Node<T> *n = new Node<T>;
+	n->data = data;
+
+	if( this->is_empty() )
+	{
+		n->next = nullptr;
+		head = tail = n;
+	}
+	else
+	{
+		n->next = head;
+		head = n;
+	}
+}
+
+
+template <class T>
+void List<T>::insert_at_tail(T data)
 {
 
 	Node<T> *n = new Node<T>;
@@ -51,7 +71,7 @@ void List<T>::enlist(T data)
 
 
 template <class T>
-T List<T>::delist()
+T List<T>::pop_from_head()
 {
 	if( this->is_empty() )
 	{
@@ -77,6 +97,41 @@ T List<T>::delist()
 		return returned;
 	}
 }
+
+
+template <class T>
+T List<T>::pop_from_tail()
+{
+	if( this->is_empty() )
+	{
+		exit(EXIT_FAILURE);
+	}
+	else if( head == tail )
+	{
+		/* only left one element */
+		Node<T> *tmp = head;
+		T returned = tmp->data;
+		head = tail = nullptr;
+		delete tmp;
+
+		return returned;
+	}
+	else
+	{
+		Node<T> *walk = head;
+		while( walk->next != tail)
+			walk = walk->next;
+		
+		T returned = tail->data;
+		walk->next = nullptr;
+		delete tail;
+		tail = walk;
+
+		return returned;
+	}
+}
+
+
 
 template <class T>
 void List<T>::dump()

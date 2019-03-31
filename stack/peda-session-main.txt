@@ -1,2 +1,0 @@
-break /Users/haruna/Desktop/project/data_structures/c++/stack/main.cpp:11
-
